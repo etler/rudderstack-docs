@@ -29,3 +29,35 @@ Once you have confirmed that the platform supports sending events to Appcues, pe
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
+* Name your destination, and click on **Next**. You should be able to see the following screen:
+
+![Connection settings for Appcues destination](../.gitbook/assets/appcues.png)
+
+* Enter the relevant details and click on **Next** to complete the setup. To get the **API Key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both your API key and the Account ID.
+
+{% hint style="info" %}
+You need to make an `identify` call before making any call to Appcues.
+{% endhint %}
+
+## Identify
+
+The `identify` call is used to uniquely identify a user in Appcues. For more information on the `identify` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+
+A sample `identify` call looks like the following snippet:
+
+```javascript
+rudderanalytics.identify("userId", {
+  name: "John Doe",
+  title: "CEO",
+  email: "name.surname@domain.com",
+  company: "Company123",
+  phone: "123-456-7890",
+  state: "Texas",
+  rating: "Hot",
+  city: "Austin",
+  postalCode: "12345",
+  country: "US",
+  street: "Sample Address",
+  state: "TX",
+});
+```
