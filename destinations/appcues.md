@@ -77,7 +77,4 @@ rudderanalytics.track("Clicked button", {
 });
 ```
 
-{% hint style="info" %}
-The above call is directly passed on to Appcues via its `Appcues.track(eventName, [eventProperties])` call.
-{% endhint %}
 
