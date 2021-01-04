@@ -77,7 +77,9 @@ rudderanalytics.track("Clicked button", {
 });
 ```
 
-TODO
+{% hint style="info" %}
+The above call is directly passed on to Appcues via its `Appcues.track(eventName, [eventProperties])` call.
+{% endhint %}
 
 ## Page
 
@@ -89,7 +91,9 @@ A sample `page` call looks like the following:
 rudderanalytics.page("homepage");
 ```
 
-TODO
+{% hint style="info" %}
+The above call is directly passed on to Appcues via its `Appcues.page()` call.
+{% endhint %}
 
 Any additional properties passed to the `page` call are also passed on to Appcues.
 
