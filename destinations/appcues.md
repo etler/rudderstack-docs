@@ -81,34 +81,3 @@ rudderanalytics.track("Clicked button", {
 The above call is directly passed on to Appcues via its `Appcues.track(eventName, [eventProperties])` call.
 {% endhint %}
 
-## Page
-
-A `page` call contains information such as the URL or the name of the web page visited by the user. For more information on the `page` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
-
-A sample `page` call looks like the following:
-
-```javascript
-rudderanalytics.page("homepage");
-```
-
-{% hint style="info" %}
-The above call is directly passed on to Appcues via its `Appcues.page()` call.
-{% endhint %}
-
-Any additional properties passed to the `page` call are also passed on to Appcues.
-
-Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
-
-## FAQs
-
-### How do I get the Appcues API Key?
-
-You can find the Appcues API key on the [Appcues Settings Page](https://studio.appcues.com/settings/account).
-
-### How do I get the Appcues Account Id?
-
-You can find the Appcues Account Id on the [Appcues Settings Page](https://studio.appcues.com/settings/account).
-
-## Contact Us
-
-If you come across any issues while configuring Appcues with RudderStack, please feel free to [contact us](mailto:%doc@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
