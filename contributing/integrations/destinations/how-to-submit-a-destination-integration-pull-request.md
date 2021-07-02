@@ -4,7 +4,7 @@ description: >-
   to, when creating a new integration.
 ---
 
-# How to Submit an Integration Pull Request
+# How to Submit a Destination Integration Pull Request
 
 When contributing to our open-source code by creating your own RudderStack integration, this guide will help you ensure that you have completed the required steps. It will also help you make sure that your integration code will fit with our pre-existing code base without any issues.
 
@@ -101,6 +101,58 @@ The `rudder-transformer` repository is responsible for transforming __the source
 * Include any `eslint` logic in the top of the file.
 * Include test cases that cover around 80% code coverage.
 
+#### Necessary Files to Contribute To ####
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"><b>File</b>
+      </th>
+      <th style="text-align:left"><b>Path</b>
+      </th>
+      <th style="text-align:left"><b>Responsibility</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>transform.js</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>v0/&lt;destination_name&gt;/transform.js</code></p>
+      </td>
+      <td style="text-align:left">This file will hold all the logic that will tranform a payload from RudderStack's standard format to the destination's acceptable format.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;destination_name&gt;.test.js</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>__tests__/&lt;destination_name&gt;.test.js</code></p>
+      </td>
+      <td style="text-align:left">This file will administer the test for the transformation. Please follow the format from an existing destination.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;destination_name&gt;_input.json</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>__tests__/data/&lt;destination_name&gt;_input.json</code></p>
+      </td>
+      <td style="text-align:left">This <code>JSON</code> file will hold all of the dummy testing payloads that will be inserted into the transformation when the test file is ran. Please follow the format from an existing destination.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;destination_name&gt;_output.json</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>__tests__/data/&lt;destination_name&gt;_output.json</code></p>
+      </td>
+      <td style="text-align:left">This <code>JSON</code> file will hold all of the expected outcomes after the input payloads were transformed by the transformation when the test file is ran. Please follow the format from an existing destination.</td>
+    </tr>
+  </tbody>
+</table>
+
 ## RudderStack Config Generator
 
 [**GitHub Repository Link**](https://github.com/rudderlabs/config-generator)\*\*\*\*
@@ -113,6 +165,85 @@ Please note the following when creating the config generator:
 * Include proper `regex` validation rules for all of the text input fields.
 * The icon file must be an `svg`.
 
+#### Necessary Files to Contribute To ####
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"><b>File</b>
+      </th>
+      <th style="text-align:left"><b>Path</b>
+      </th>
+      <th style="text-align:left"><b>Responsibility</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;DESTINATION_NAME&gt;.json</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/components/destination/destinationList/&lt;DESTINATION_NAME&gt;.json</code></p>
+      </td>
+      <td style="text-align:left">This file will contain a <code>JSON</code> object that will hold all of the fields for the necessary settings that your integration will need to operate properly.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Edit <code>dst.ts</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/components/destination/destinationList/dst.ts</code></p>
+      </td>
+      <td style="text-align:left">This small edit will help allow the destination to appear in the destination catalogue.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Edit <code>destinations.json</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/stores/destinations.json</code></p>
+      </td>
+      <td style="text-align:left">Including the necessary data here will allow the destination to appear in the destination catalogue (follow pre-existing template).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;DESTINATION_NAME&gt;.md</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/components/destinationsCatalogue/destinationsConfigure/&lt;DESTINATION_NAME&gt;.md</code></p>
+      </td>
+      <td style="text-align:left">This markdown file will act as a quick high level overview of what this destination is and how to find more information for it.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Edit <code>index.tsx</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/components/destinationsCatalogue/destinationsConfigure/index.tsx</code></p>
+      </td>
+      <td style="text-align:left">This small edit will allow the text in the markdown file to be viewed by the client.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>Edit <code>destinationIcon.tsx</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/components/icons/destinationIcon.tsx</code></p>
+      </td>
+      <td style="text-align:left">There are two necessary edits to be made to this file. Add an import for you icon's <code>svg</code> file (follow the pre-existing template). Then below, add another <code>case</code> to the <code>switch</code> statement (follow the pre-existing template).</td>
+    </tr>
+        <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;destination_name&gt;.svg</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>src/icons/svg/&lt;destination_name&gt;.svg</code></p>
+      </td>
+      <td style="text-align:left">Include the actual icon <code>svg</code> file here.</td>
+    </tr>
+  </tbody>
+</table>
+
 ## RudderStack Documentation
 
 [**GitHub Repository Link**](https://github.com/rudderlabs/rudderstack-docs)\*\*\*\*
@@ -122,6 +253,31 @@ The `rudderstack-docs` repository houses all the relevant documentation for inst
 {% hint style="warning" %}
 Please do not include screenshots. We will include them after merging the changes.
 {% endhint %}
+
+#### Necessary Files to Contribute To ####
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"><b>File</b>
+      </th>
+      <th style="text-align:left"><b>Path</b>
+      </th>
+      <th style="text-align:left"><b>Responsibility</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>Create <code>&lt;destination_name&gt;.md</code></p>
+      </td>
+      <td style="text-align:left">
+        <p><code>destinations/&lt;category_folder&gt;/&lt;destination_name&gt;.md</code></p>
+      </td>
+      <td style="text-align:left">This markdown file will be added to the RudderStack Docs. Inform the user how to properly use this integration. Follow the pre-existing structure found with other integrations.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Contact Us
 
