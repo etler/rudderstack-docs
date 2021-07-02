@@ -35,7 +35,7 @@ To ensure everything is working as intended, you may want to test the whole stac
 6. Go to Postman and create a `POST` requestion that is pointed to `http://localhost:8080/v1/<event_type>` where `<event_type>` can be any of the event types i.e. identify, track, page, etc.
 7. In the "Auth" tab of Postman, create a "Basic Auth" authorization. For the "Username" insert the write key of the HTTP API source you are sending the event to. Leave the "Password" blank.
 8. In the JSON body of the request, put a RudderStack formatted event. For a template and example, look [here](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#6-identify).
-9. Press send and inspect the response. This is what the payload will look like as it gets sent to the destination.
+9. Press send and validate that the event was received by the destination correctly.
 
 ## Contact Us
 
