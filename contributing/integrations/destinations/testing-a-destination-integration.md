@@ -28,13 +28,13 @@ Another component you must develop is the configuration settings for the integra
 To ensure everything is working as intended, you may want to test the whole stack end to end. This would involve filling out the settings using the `config-generator`. Then updating the `rudder-server` with the `workspaceConfig.json` file and running it. Then, running the `rudder-transformer`. And finally, send a `POST` request via Postman to audit the response.
 
 1. Follow the instructions above to produce a `workspaceConfig.json` file via the `config-generator`. Make sure that your source is an HTTP API source so that we can use Postman for testing. Feel free to test using other sources, but this guide will use the HTTP API source and Postman.
-2. Save the `workspaceConfig.json` file somewhere in the `rudder-server` reppository. Preferably in the `config` folder.
+2. Save the `workspaceConfig.json` file somewhere in the `rudder-server` repository. Preferably in the `config` folder.
 3. Follow [these instructions](https://docs.rudderstack.com/get-started/config-generator#developer-machine-setup). The `configJSONPath` should be `./config/workspaceConfig.json` if it was stored in the `config` folder.
 4. Start the `rudder-server` by running this command `go run -mod=vendor main.go` from the terminal in the `rudder-server` directory. It should be running on `PORT: 8080`
 5. Start the `rudder-transfomer` by running this command `npm start` from the terminal in the `rudder-transformer` directory. It should be running on `PORT: 9090`
 6. Go to Postman and create a `POST` requestion that is pointed to `http://localhost:8080/v1/<event_type>` where `<event_type>` can be any of the event types i.e. identify, track, page, etc.
 7. In the "Auth" tab of Postman, create a "Basic Auth" authorization. For the "Username" insert the write key of the HTTP API source you are sending the event to. Leave the "Password" blank.
-8. In the JSON body of the request, put a RudderStack formatted event. For a template and example, look [here](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#6-identify).
+8. In the JSON body of the request, put a RudderStack formatted event. For a template and example of an accetable event, look [here](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#6-identify), make sure the event structure matches that of the `<event_type>` you are sending the request to.
 9. Press send and validate that the event was received by the destination correctly.
 
 ## Contact Us
